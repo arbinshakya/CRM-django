@@ -1,0 +1,98 @@
+{% extends "webapp/base.html" %}
+
+{% load crispy_forms_tags %}
+
+{% block content %}
+<br>
+<body>
+    <div class="form-row">
+        <div class="col">
+            <h3>Create record</h3>
+            <h5>Start adding in the required details for your record!</h5>
+            <br>
+
+            <form method="POST" autocomplete="off">
+                {% csrf_token %}
+
+                <!-- First Row: First Name and Last Name -->
+                <div class="form-row mb-3 d-flex justify-content-between gap-3">
+                    <div class="col-md-6 mb-3">
+                        <div class="form-group">
+                            {{ form.first_name }}
+                        </div>
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <div class="form-group">
+                            {{ form.last_name }}
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Second Row: Email and Phone -->
+                <div class="form-row mb-3 d-flex justify-content-between gap-3">
+                    <div class="col-md-6 mb-3">
+                        <div class="form-group">
+                            {{ form.gender }}
+                        </div>
+                    </div>
+
+
+                
+                    <div class="col-md-6 mb-3">
+                        <div class="form-group">
+                            {{ form.email }}
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Third Row: Address and City -->
+                <div class="form-row mb-3 d-flex justify-content-between gap-3">
+                    <div class="col-md-6 mb-3">
+                        <div class="form-group">
+                            {{ form.phone }}
+                        </div>
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <div class="form-group">
+                            {{ form.address }}
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Fourth Row: Province and Country -->
+                <div class="form-row mb-3 d-flex justify-content-between gap-3">
+                    <div class="col-md-6 mb-3">
+                        <div class="form-group">
+                            {{ form.city }}
+                        </div>
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <div class="form-group">
+                            {{ form.province }}
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="form-row mb-3 d-flex justify-content-between gap-3">
+                    <div class="col-md-6 mb-3">
+                        <div class="form-group">
+                            {{ form.country }}
+                        </div>
+                    </div>
+                </div>
+
+
+                <a href="{% url 'dashboard' %}" class="btn btn-secondary w-30 p-2">
+                    <i class="fa fa-angle-left" aria-hidden="true"></i> &nbsp; Back
+                </a>
+                
+                <button type="submit" class="btn btn-primary w-30 p-2">Create Record</button>
+                
+            </form>
+
+            <br>
+        </div>
+    </div>
+</body>
+{% endblock %}

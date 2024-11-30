@@ -1,0 +1,37 @@
+.form-layout{
+    border-radius: 15px;
+    width: 500px;
+}
+
+.message-text {
+    color: white;
+}
+
+/* CSS to center the form but slightly higher */
+.form-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 90vh; /* Reduced from 100vh to move the form slightly higher */
+    margin-top: -20px; /* Adjust the margin to move the form upwards */
+}
+
+.form-layout {
+    max-width: 400px;
+    width: 100%;
+    background-color: #f8f9fa;
+    padding: 30px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+}
+
+.text-center {
+    text-align: center;
+}
+
+
+/* Custom container width */
+.container {
+    max-width: 1200px; /* Customize the width here */
+    width: 100%;
+}

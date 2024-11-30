@@ -1,0 +1,43 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+  
+  <!-- Navbar Brand (Project Name) -->
+  <a class="navbar-brand ms-3" href="{% url '' %}">ProjectX</a>
+
+  <!-- Navbar Toggle Button (For Mobile View) -->
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" 
+          aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <!-- Navbar Links Section -->
+  <div class="collapse navbar-collapse" id="navbarNavDropdown">
+      
+      <!-- Left-aligned Links (Dashboard if logged in) -->
+      <ul class="navbar-nav">
+          {% if user.is_authenticated %}
+              <li class="nav-item">
+                  <a class="nav-link" href="{% url 'dashboard' %}">Dashboard &nbsp; <i class="fa fa-home" aria-hidden="true"></i></a>
+              </li>
+          {% endif %}
+      </ul>
+
+      <!-- Right-aligned Links (Sign out, Register, Login) -->
+      <ul class="navbar-nav ms-auto"> <!-- "ms-auto" aligns items to the right -->
+          {% if user.is_authenticated %}
+              <li class="nav-item">
+                  <a class="nav-link" href="{% url 'user_logout' %}">Sign out &nbsp; <i class="fa fa-sign-out" aria-hidden="true"></i></a>
+              </li>
+          {% else %}
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'my_login' %}">Login</a>
+                </li>
+              <li class="nav-item">
+                  <a class="nav-link" href="{% url 'register' %}">Sign up</a>
+              </li>
+             
+          {% endif %}
+      </ul>
+
+  </div>
+
+</nav>

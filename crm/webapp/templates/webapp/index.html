@@ -1,0 +1,21 @@
+{% extends "webapp/base.html" %}
+
+{% block content %}
+    <body>
+        <br>
+        <br>
+        <br>
+        <div class = "text-center">
+            <h3>Project X Management at it's finest</h3>
+        <br>
+            <h5>Keep track of your records effectively!</h5>
+        <hr>
+        <br>
+        {% if user.is_authenticated %}
+            
+
+        {% else %}
+            <a class="btn btn-primary btn-lg" type = "button" href = "{% url 'register' %}">Create your account</a>
+        {% endif %}
+        </body>
+{% endblock %}

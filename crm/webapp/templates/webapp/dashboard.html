@@ -1,0 +1,66 @@
+{% extends "webapp/base.html" %}
+
+{% block content %}
+    <br>
+    <h4 class="text-center">Welcome, {{ request.user.username }}!</h4>
+    <hr>
+    <br>
+
+    <div class="container">
+        <div class="row mb-3">
+            <div class="col-md-6">
+                <a class="btn btn-outline-primary btn-sm" href="{% url 'create-record' %}">
+                    Create a new record
+                </a>
+            </div>
+            <!-- Search form -->
+            <div class="col-md-6">
+                <form method="get" action="{% url 'dashboard' %}">
+                    <div class="input-group mb-3 gap-2">
+                        <!-- Search input field -->
+                        <input type="text" class="form-control" name="search" placeholder="Search..." value="{{ request.GET.search }}">
+                        <!-- Gap between search input and button -->
+                        <div class="input-group-append">
+                            <button class="btn btn-outline-primary ml-2" type="submit">Search</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            
+        </div>
+
+        <table class="table table-hover">
+            <thead class="table-light">
+                <tr>
+                    <th scope="col">ID</th>
+                    <th scope="col">Full name</th>
+                    <th scope="col">Email</th>
+                    <th scope="col">Phone</th>
+                    <th scope="col">Address</th>
+                    <th scope="col">Date joined</th>
+                    <th scope="col">View</th>
+                </tr>
+            </thead>
+            
+            <tbody>
+                {% if records %}
+                    {% for record in records %}
+                        <tr>
+                            <td>{{ record.id }}</td>
+                            <td>{{ record.first_name }} {{ record.last_name }}</td>
+                            <td>{{ record.email }}</td>
+                            <td>{{ record.phone }}</td>
+                            <td>{{ record.address }}</td>
+                            <td>{{ record.creation_date }}</td>
+                            <td><a href="{% url 'view-record' record.id %}"><i class="fa fa-eye" aria-hidden="true"></i></a></td>
+                        </tr>
+                    {% endfor %}
+                {% else %}
+                    <tr>
+                        <td colspan="7" class="text-center">No records found.</td>
+                    </tr>
+                {% endif %}
+            </tbody>
+        </table>
+    </div>
+{% endblock %}

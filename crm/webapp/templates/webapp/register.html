@@ -1,0 +1,40 @@
+{% extends "webapp/base.html" %}
+
+{% load crispy_forms_tags %}
+
+{% block content %}
+<br>
+
+<br>
+    <div class="d-flex justify-content-center">
+        <div class="container bg-light shadow-md p-5 form-layout" style="max-width: 500px; margin: 10 auto;">
+            <h3>Create your account</h3>
+            <h5>Start managing your clients today!</h5>
+            <br>
+
+            <form method="POST" autocomplete="off">
+                {% csrf_token %}
+                
+                <div class="form-group mb-3">
+                    {{ form.username }}
+                </div>
+                
+                <div class="form-group mb-3">
+                    {{ form.password1 }}
+                </div>
+                
+                <div class="form-group mb-3">
+                    {{ form.password2 }}
+                </div>
+                
+                <button type="submit" class="btn btn-primary w-100 btn-block p-2">Register</button>
+            </form>
+            
+            <br>
+            <div class="text-center">
+                <p>Already have an account?</p>
+                <a href="{% url 'my_login' %}">Login</a>
+            </div>
+        </div>
+    </div>
+{% endblock %}
